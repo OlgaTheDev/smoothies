@@ -1,0 +1,29 @@
+// Mixins
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+
+// Extends
+
+%amatic{
+    font-family: 'Amatic SC', cursive;
+}
+
+%open-sans{
+    font-family: 'Open Sans Condensed', sans-serif;
+}

@@ -1,0 +1,1115 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+
+
+//Base
+
+body, html{
+    height: 100%;
+    font-size: 62.5%;
+    @extend %open-sans;
+}
+
+body{
+    position: relative;
+    background-color: #333;
+}
+
+body, html, *, *:after, *:before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    @extend %amatic;
+    font-size: 5rem;
+    margin: 5vh 0 2vh;
+    text-align: center;
+    color: $strawberry;
+}
+
+a{
+    text-decoration: none;
+    color: lightseagreen;
+    transition: all .3s ease;
+
+    &:hover{
+        color: $strawberry;
+    }
+
+    &:hover, &:active, &:focus{
+        outline: none;
+    }
+}
+
+
+// Common
+
+.block{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top:0;
+    left: 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.close-btn{
+    @include size(40px, 40px);
+    background: url("../images/close.svg") 0 0 no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-size: 100%;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    
+    &:hover, &:active, &:focus{
+        transform: rotate(180deg);
+    }
+}
+
+.scale-down{
+    transform: scale(0.5);
+    opacity: 0;
+    z-index: 1;
+}
+
+%escape-transition{
+    transition: transform .5s ease-in-out, opacity .5s ease-in-out;
+}
+
+%half-page{
+    padding: 0 20px;
+}
+
+
+@keyframes pulse-once {
+    0%{
+        transform: scale(1);
+    }
+
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+
+// Smoothies-list
+
+.smoothies-list{
+    position: relative;
+    background-color: #fff;
+    @extend %escape-transition;
+    overflow: auto;
+    padding-bottom: 60px;
+
+    &.scale-down{
+        @extend .scale-down;
+    }
+
+    ul{
+        @include clearfix;
+        background-color: #fff;
+        position: relative;
+        z-index: 10;
+
+        li{
+            list-style: none;
+            display: block;
+            padding: 5px;
+            width: 50%;
+            float: left;
+
+            a{
+                text-align: center;
+                display: block;
+                padding: 20px;
+                background-color: #fff;
+                position: relative;
+                z-index: 20;
+
+                svg{
+                    height: 20vh;
+                }
+            }
+        }
+    }
+}
+
+.panel-items{
+    top: 100vh;
+    z-index: 100;
+    overflow: visible;
+    @extend %escape-transition;
+
+    .panel-item{
+        z-index: 0;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+        &.show{
+            transform: translateY(-100%);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        &.scale-down{
+            transform: translateY(-100%) scale(0.5);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .banana{
+            .recipe{
+                background-color: $banana;
+            }
+        }
+
+        .apple{
+            .recipe{
+                background-color: $apple;
+            }
+        }
+
+        .carrot{
+            .recipe{
+                background-color: $orange;
+            }
+        }
+
+        .chocolate{
+            .recipe{
+                background-color: $chocolate;
+                color: #fff;
+            }
+        }
+
+        .mango{
+            .recipe{
+                background-color: $mango;
+                color: #fff;
+            }
+        }
+
+        .melon{
+            .recipe{
+                background-color: $melon;
+            }
+        }
+
+        .vanilla{
+            .recipe{
+                background-color: $vanilla;
+            }
+        }
+
+        .coffee{
+            .recipe{
+                background-color: $coffee;
+                color: #fff;
+            }
+        }
+
+        .watermelon{
+            .recipe{
+                background-color: $watermelon;
+                color: #fff;
+            }
+        }
+
+        .strawberry{
+            .recipe{
+                background-color: $strawberry;
+                color: #fff;
+            }
+        }
+
+        .img{
+            height: 50%;
+            background-color: white;
+            
+            svg{
+                height: 35vh;
+                margin-top: 5vh;
+            }
+        }
+    
+        .recipe{
+            height: 50%;
+            padding: 10px 20px 40px;
+            overflow: auto;
+
+            p{
+                font-size: 1.8rem;
+                line-height: 2.8rem;
+            }
+
+            ul{
+                li{
+                    font-size: 1.8rem;
+                    line-height: 2.8rem;
+                }
+            }
+
+            h3{
+                font-size: 3.5rem;
+                margin: 2rem 0 1.5rem;
+            }
+        }
+    
+        .next-block{
+            display: block;
+            text-align: center;
+            height: 60px;
+            width: 60px;
+            background-color: #333;
+            padding: 0;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            border-radius: 50%;
+
+            &:after{
+                content: '';
+                display: block;
+                height: 60px;
+                width: 60px;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                border-radius: 50%;
+                background-color: rgba($strawberry, 20%);
+                z-index: -1;
+            }
+            
+            &:hover, &:active, &:focus{
+                background-color: $strawberry;
+                outline: none;
+                animation: pulse-once .3s ease-in-out;
+
+                &:after{
+                    transform: scale(1.3);
+                    opacity: 0;
+                    transition: all .5s ease;
+                }
+
+                .next{
+                    color: #fff;
+                    outline: none;
+                }
+            }
+        }
+
+        .next{
+            font-size: 2rem;
+            color: white;
+            display: block;
+            position: absolute;
+            top: 19px;
+            left: 16px;
+        }
+    }
+}
+
+
+@media (min-width: $tablets) {
+
+    .smoothies-list{
+        ul{
+            width: 100%;
+
+            @include clearfix;
+
+            li{
+                padding: 30px;
+            }
+        }
+    }
+
+    .panel-items .panel-item{
+        .recipe{
+            padding: 0 50px 50px;
+
+            h3{
+                font-size: 5rem;
+                margin: 3rem 0 2rem;
+            }
+
+            ul{
+                li{
+                    font-size: 2.4rem;
+                    line-height: 3.4rem;
+                }
+            }
+
+            p{
+                font-size: 2.4rem;
+                line-height: 3.4rem;
+            }
+        }
+    }
+
+}
+
+@media (min-width: $netbooks) {
+
+    h1{
+        margin: 7vh 0 2vh;
+        font-size: 7rem;
+    }
+
+    .smoothies-list{
+        ul{
+            margin: 0 auto;
+            @include clearfix;
+
+            li{
+                width: 20%;
+                padding: 20px;
+
+                a{
+                    &:after{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        right:0;
+                        bottom: 0;
+                        width: 0;
+                        height: 2px;
+                        margin: 0 auto;
+                        transition: width .3s ease;
+                    }
+
+                    &:hover{
+                        &:after{
+                            width: 70%;
+                        }
+                    }
+                }
+
+                &.banana{
+                    a{
+                        &:after{
+                            background-color: $banana;
+                        }
+                    }
+                }
+
+                &.apple{
+                    a{
+                        &:after{
+                            background-color: $apple;
+                        }
+                    }
+                }
+
+                &.carrot{
+                    a{
+                        &:after{
+                            background-color: $orange;
+                        }
+                    }
+                }
+
+                &.chocolate{
+                    a{
+                        &:after{
+                            background-color: $chocolate;
+                        }
+                    }
+                }
+
+                &.mango{
+                    a{
+                        &:after {
+                            background-color: $mango;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.melon{
+                    a{
+                        &:after {
+                            background-color: $melon;
+                        }
+                    }
+                }
+
+                &.vanilla{
+                    a{
+                        &:after {
+                            background-color: $vanilla;
+                        }
+                    }
+                }
+
+                &.coffee{
+                    a{
+                        &:after {
+                            background-color: $coffee;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.watermelon{
+                    a{
+                        &:after {
+                            background-color: $watermelon;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.strawberry{
+                    a{
+                        &:after {
+                            background-color: $strawberry;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .panel-items{
+        .panel-item{
+            .smoothie-wrapper{
+                @include clearfix;
+                @include size(100vw, calc(100vh - 80px));
+            }
+
+            .img{
+                float: left;
+                width: 50%;
+                padding: 50px;
+                height: 100%;
+
+                svg{
+                    height: 50vh;
+                    margin-top: 10vh;
+                }
+            }
+
+            .recipe{
+                float: left;
+                width: 50%;
+                padding: 0 50px 50px;
+                height: 100%;
+
+                h3{
+                    font-size: 5rem;
+                    margin: 3rem 0 2rem;
+                }
+
+                ul{
+                    li{
+                        font-size: 2.4rem;
+                        line-height: 3.4rem;
+                    }
+                }
+
+                p{
+                    font-size: 2.4rem;
+                    line-height: 3.4rem;
+                }
+            }
+
+            .next-block{
+                height: 80px;
+                width: 100vw;
+                padding: 25px 0;
+                position: static;
+                border-radius: 0;
+
+                &:after{
+                    content: none;
+                    transform: none;
+                }
+
+                &:hover{
+                    background-color: #333;
+                    animation: none;
+
+                    .next{
+                        color: $strawberry;
+
+                        &:after, &:before{
+                            background-color: $strawberry;
+                            left: 90px;
+                        }
+
+                        span:before{
+                            width: 20px;
+                            transition: all .15s ease .15s;
+                        }
+                    }
+                }
+
+                &:active, &:focus{
+                    background-color: #333;
+                    animation: none;
+
+                    .next{
+                        &:after, &:before{
+                            left: 110px;
+                            opacity: 0;
+                            transition: all .2s ease;
+                        }
+
+                        span:before{
+                            right: 0;
+                            opacity: 0;
+                            transition: all .2s ease;
+                        }
+                    }
+                }
+            }
+
+            .next{
+                font-size: 2.6rem;
+                padding: 0 55px 0 25px;
+                position: relative;
+                color: white;
+                display: inline-block;
+                top: 0;
+                left: 0;
+
+                &:before, &:after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 14px;
+                    @include size(10px, 2px);
+                    background-color: white;
+                    transition: all .15s ease;
+                    transform-origin: right;
+
+                }
+
+                &:before{
+                    transform: rotate(45deg);
+                }
+
+                &:after{
+                    transform: rotate(-45deg);
+                }
+
+                span{
+                    &:before{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        right: 20px;
+                        top: 14px;
+                        @include size(0, 2px);
+                        background-color: $strawberry;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: $screens) {
+
+    h1{
+        font-size: 8rem;
+        margin: 8vh 0 4vh;
+    }
+
+}
+
+
+@media screen and (min-height: 800px){
+    .panel-items .panel-item .recipe h3{
+        margin: 5vh 0 3vh;
+    }
+
+    .smoothies-list ul li{
+        padding: 40px 20px;
+    }
+}
+
+
+// Footer
+
+#footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    font-size: 2rem;
+    @include clearfix;
+}
+
+
+
+// SVG animation
+
+svg{
+    width: 100%;
+    overflow: visible;
+}
+
+@keyframes rotate-from-left {
+    0% {
+        transform:  translateX(-380px) rotate(0);
+        opacity: 0;
+    }
+
+    20%{
+        opacity: 1;
+    }
+
+    100% {
+        transform:  translateX(0) rotate(360deg);
+    }
+}
+
+@keyframes fall-from-top {
+    0%{
+        transform:  translateY(-1200px);
+    }
+
+    20% {
+        transform: translateY(0);
+    }
+
+    30%{
+        transform: rotate(15deg);
+    }
+
+    50%{
+        transform: rotate(-10deg);
+    }
+
+    80%{
+        transform: rotate(5deg);
+    }
+
+    100%{
+        transform: rotate(0);
+    }
+
+}
+
+
+@keyframes falling-drowning {
+    0% {
+        transform: translateY(-1200px);
+    }
+    
+    30%{
+        transform: translateY(100px);
+    }
+    
+    50%{
+        transform: translateY(0);
+    }
+    
+    70%{
+        transform: translateY(50px);
+    }
+    
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes scale-up{
+    0%{
+        transform: scale(0);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes pour-out{
+    0%{
+        transform: scale3d(1,0,1);
+        opacity: 0;
+    }
+    30%{
+        transform: scale3d(1,0,1);
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    100%{
+        transform: scale3d(1,1,1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes shake {
+    0%{
+        transform: translateX(0);
+    }
+
+    20%{
+        transform: translateX(10px);
+    }
+
+    40%{
+        transform: translateX(-10px);
+    }
+
+    60%{
+        transform: translateX(5px);
+    }
+
+    80%{
+        transform: translateX(-5px);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%{
+        transform: translate(0);
+    }
+
+    25%{
+        transform: translate(-60px, -10px);
+    }
+
+    50%{
+        transform: translate(-120px, 0);
+    }
+
+    75%{
+        transform: translate(-60px, 40px);
+    }
+
+    100%{
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes mix {
+    0%{
+        transform:  translate(0, 0) rotate3d(0,0,0,0);
+    }
+
+    25%{
+        transform: translate(-175px, 10px) rotate3d(0,0,1,-20deg);
+    }
+
+    50%{
+        transform: translate(-350px, 70px) rotate3d(0,0,1,-40deg);    }
+
+    75%{
+        transform: translate(-175px, 50px) rotate3d(0,0,1,-20deg);
+    }
+
+    100%{
+        transform:  translate(0, 0) rotate3d(0,0,0,0);
+    }
+}
+
+@keyframes swing {
+    0%{
+        transform: rotate(0);
+    }
+
+    15%{
+        transform: rotate(15deg);
+    }
+
+    30%{
+        transform: rotate(-15deg);
+    }
+
+    45%{
+        transform: rotate(10deg);
+    }
+
+    65%{
+        transform: rotate(-10deg);
+    }
+
+    80%{
+        transform: rotate(5deg);
+    }
+
+    100%{
+        transform: rotate(0);
+    }
+}
+
+@keyframes push-from-left {
+    0%{
+        transform: translateX(-56%);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes close-cup {
+    0%{
+        transform: rotate(-45deg);
+    }
+
+    20%{
+        transform: rotate(-45deg);
+    }
+
+    100%{
+        transform: rotate(0);
+    }
+}
+
+%rotate-from-left{
+    animation: rotate-from-left 1.2s ease-in-out;
+    transform-origin: center center;
+}
+
+%fall-from-top{
+    animation: fall-from-top 2s ease-out;
+    transform-origin: center bottom;
+}
+
+%falling-drowning{
+    animation: falling-drowning 1s linear;
+}
+
+
+
+.banana{
+    svg{
+        &.to-show{
+            .sirup{
+                animation: pour-out 1s ease-out;
+                transform-origin: top center;
+            }
+
+            .berry{
+                @extend %rotate-from-left;
+            }
+
+            .banana{
+                @extend %fall-from-top;
+            }
+        }
+
+    }
+
+}
+
+
+.coffee{
+    svg{
+        &.to-show{
+            .cup{
+                animation: close-cup 1s ease-out;
+                transform-origin: left bottom;
+            }
+
+            .bean{
+                animation: fall-from-top 1.2s linear;
+                transform-origin: center bottom;
+
+                &.second{
+                    animation: fall-from-top 1.6s linear;
+                }
+
+                &.first{
+                    animation: fall-from-top 2.2s linear;
+                }
+            }
+        }
+    }
+}
+
+
+.carrot{
+    svg{
+        &.to-show{
+            .orange{
+                @extend %rotate-from-left;
+
+            }
+            
+            .carrot-item{
+                @extend %fall-from-top;
+            }
+        }
+    }
+}
+
+
+.apple{
+    svg{
+        &.to-show{
+            .apple-item{
+                @extend %fall-from-top;
+            }
+            
+            .tube{
+                @extend %falling-drowning;
+            }
+        }
+    }
+}
+
+
+.chocolate{
+    svg{
+        overflow: visible;
+        &.to-show{
+            .strawberry-item{
+                animation: float 2.5s linear infinite;
+                transform-origin: bottom center;
+            }
+
+            .choco-piece-1{
+                @extend %rotate-from-left;
+            }
+
+            .choco-piece-2{
+                animation: rotate-from-left 1.8s ease-in-out;
+                transform-origin: center center;
+            }
+        }
+    }
+}
+
+
+.vanilla{
+    svg{
+        &.to-show{
+            .cream{
+                animation: scale-up .8s ease-out;
+                transform-origin: center center
+            }
+            
+            .vanilla-stick{
+                animation: fall-from-top 1.2s linear;
+                transform-origin: center bottom;
+
+                &.second{
+                    animation: fall-from-top 1.6s linear;
+                }
+            }
+        }
+    }
+}
+
+
+.mango{
+    svg{
+        overflow: visible;
+
+        &.to-show{
+            .tube{
+                animation: mix 2s linear .4s;
+                animation-iteration-count: 2;
+                transform-origin: center top;
+            }
+
+            .banana-fruit{
+                @extend %fall-from-top;
+            }
+
+            .mango-fruit{
+                animation: swing 2s ease-in-out;
+                transform-origin: bottom center;
+            }
+        }
+    }
+}
+
+
+.melon{
+    svg{
+        &.to-show{
+            .melon-fruit{
+                animation: push-from-left 1s ease-in-out;
+                transform-origin: bottom center;
+            }
+
+            .leaf{
+                @extend %fall-from-top;
+            }
+        }
+    }
+}
+
+
+.watermelon{
+    svg{
+        &.to-show{
+            .watermelon-fruit{
+                @extend %fall-from-top;
+            }
+        }
+    }
+}
+
+
+.strawberry{
+    svg{
+        &.to-show{
+            .strawberry-fruit-1{
+                @extend %fall-from-top;
+            }
+            .strawberry-fruit-2{
+                animation: fall-from-top 2.7s ease-out;
+                transform-origin: bottom center;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

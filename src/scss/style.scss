@@ -118,7 +118,7 @@ a{
     background-color: #fff;
     @extend %escape-transition;
     overflow: auto;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 
     &.scale-down{
         @extend .scale-down;
@@ -147,6 +147,12 @@ a{
 
                 svg{
                     height: 20vh;
+                }
+
+                p{
+                    font-size: 20px;
+                    margin: 20px 20px 0;
+                    height: 44px;
                 }
             }
         }
@@ -197,6 +203,10 @@ a{
             .recipe{
                 background-color: $chocolate;
                 color: #fff;
+
+                h1{
+                    color: #fff;
+                }
             }
         }
 
@@ -204,6 +214,10 @@ a{
             .recipe{
                 background-color: $mango;
                 color: #fff;
+
+                h1{
+                    color: #fff;
+                }
             }
         }
 
@@ -223,6 +237,10 @@ a{
             .recipe{
                 background-color: $coffee;
                 color: #fff;
+
+                h1{
+                    color: #fff;
+                }
             }
         }
 
@@ -230,6 +248,10 @@ a{
             .recipe{
                 background-color: $watermelon;
                 color: #fff;
+
+                h1{
+                    color: #fff;
+                }
             }
         }
 
@@ -237,6 +259,10 @@ a{
             .recipe{
                 background-color: $strawberry;
                 color: #fff;
+
+                h1{
+                    color: #fff;
+                }
             }
         }
 
@@ -265,6 +291,11 @@ a{
                     font-size: 1.8rem;
                     line-height: 2.8rem;
                 }
+            }
+
+            h1{
+                text-align: left;
+                color: #333;
             }
 
             h3{
@@ -329,6 +360,23 @@ a{
 }
 
 
+// Footer
+
+#footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+
+// Media
+
+
 @media (min-width: $tablets) {
 
     .smoothies-list{
@@ -339,6 +387,14 @@ a{
 
             li{
                 padding: 30px;
+
+                a{
+                    padding: 0 20px;
+
+                    p{
+                        font-size: 24px;
+                    }
+                }
             }
         }
     }
@@ -366,16 +422,22 @@ a{
         }
     }
 
+    #footer{
+        font-size: 2rem;
+    }
+
 }
 
 @media (min-width: $netbooks) {
 
     h1{
-        margin: 7vh 0 2vh;
+        margin: 4vh 0 0;
         font-size: 7rem;
     }
 
     .smoothies-list{
+        padding-bottom: 60px;
+
         ul{
             margin: 0 auto;
             @include clearfix;
@@ -385,6 +447,8 @@ a{
                 padding: 20px;
 
                 a{
+                    padding: 20px;
+                    
                     &:after{
                         content: '';
                         display: block;
@@ -403,6 +467,10 @@ a{
                             width: 70%;
                         }
                     }
+
+                    p{
+                        font-size: 16px;
+                    }
                 }
 
                 &.banana{
@@ -410,13 +478,19 @@ a{
                         &:after{
                             background-color: $banana;
                         }
+                        &:hover{
+                            color: $banana;
+                        }
                     }
                 }
 
                 &.apple{
                     a{
                         &:after{
-                            background-color: $apple;
+                            background-color: darken($apple, 20%);
+                        }
+                        &:hover{
+                            color: darken($apple, 20%);
                         }
                     }
                 }
@@ -426,6 +500,9 @@ a{
                         &:after{
                             background-color: $orange;
                         }
+                        &:hover{
+                            color: $orange;
+                        }
                     }
                 }
 
@@ -433,6 +510,9 @@ a{
                     a{
                         &:after{
                             background-color: $chocolate;
+                        }
+                        &:hover{
+                            color: $chocolate;
                         }
                     }
                 }
@@ -443,13 +523,19 @@ a{
                             background-color: $mango;
                             color: #fff;
                         }
+                        &:hover{
+                            color: $mango;
+                        }
                     }
                 }
 
                 &.melon{
                     a{
                         &:after {
-                            background-color: $melon;
+                            background-color: darken($melon, 30%);
+                        }
+                        &:hover{
+                            color: darken($melon, 30%);
                         }
                     }
                 }
@@ -457,7 +543,10 @@ a{
                 &.vanilla{
                     a{
                         &:after {
-                            background-color: $vanilla;
+                            background-color: darken($vanilla, 60%);
+                        }
+                        &:hover{
+                            color: darken($vanilla, 60%);
                         }
                     }
                 }
@@ -468,6 +557,9 @@ a{
                             background-color: $coffee;
                             color: #fff;
                         }
+                        &:hover{
+                            color: $coffee;
+                        }
                     }
                 }
 
@@ -477,6 +569,9 @@ a{
                             background-color: $watermelon;
                             color: #fff;
                         }
+                        &:hover{
+                            color: $watermelon;
+                        }
                     }
                 }
 
@@ -485,6 +580,9 @@ a{
                         &:after {
                             background-color: $strawberry;
                             color: #fff;
+                        }
+                        &:hover{
+                            color: $strawberry;
                         }
                     }
                 }
@@ -630,20 +728,41 @@ a{
             }
         }
     }
+
+    #footer{
+        @include clearfix;
+        text-align: center;
+        font-size: 2rem;
+        padding: 20px 40px;
+
+        .created-by{
+            float: right;
+        }
+
+        .credits{
+            float: left;
+        }
+    }
 }
 
+
+@media (min-width: $notebooks) {
+    .smoothies-list ul li a p{
+        font-size: 20px;
+    }
+}
 
 @media (min-width: $screens) {
-
-    h1{
-        font-size: 8rem;
-        margin: 8vh 0 4vh;
+    .smoothies-list ul li a p{
+        font-size: 24px;
     }
-
 }
 
 
-@media screen and (min-height: 800px){
+@media screen and (min-width: 1024px) and (min-height: 800px){
+    h1{
+        margin: 6vh 0 1vh;
+    }
     .panel-items .panel-item .recipe h3{
         margin: 5vh 0 3vh;
     }
@@ -652,20 +771,6 @@ a{
         padding: 40px 20px;
     }
 }
-
-
-// Footer
-
-#footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 40px;
-    font-size: 2rem;
-    @include clearfix;
-}
-
 
 
 // SVG animation

@@ -146,7 +146,7 @@ a {
   position: relative;
   background-color: #fff;
   overflow: auto;
-  padding-bottom: 60px; }
+  padding-bottom: 80px; }
   .smoothies-list ul {
     background-color: #fff;
     position: relative;
@@ -171,6 +171,10 @@ a {
         z-index: 20; }
         .smoothies-list ul li a svg {
           height: 20vh; }
+        .smoothies-list ul li a p {
+          font-size: 20px;
+          margin: 20px 20px 0;
+          height: 44px; }
 
 .panel-items {
   top: 100vh;
@@ -201,9 +205,13 @@ a {
     .panel-items .panel-item .chocolate .recipe {
       background-color: #894f1a;
       color: #fff; }
+      .panel-items .panel-item .chocolate .recipe h1 {
+        color: #fff; }
     .panel-items .panel-item .mango .recipe {
       background-color: #f18316;
       color: #fff; }
+      .panel-items .panel-item .mango .recipe h1 {
+        color: #fff; }
     .panel-items .panel-item .melon .recipe {
       background-color: #ffe5b4; }
     .panel-items .panel-item .vanilla .recipe {
@@ -211,12 +219,18 @@ a {
     .panel-items .panel-item .coffee .recipe {
       background-color: #b89882;
       color: #fff; }
+      .panel-items .panel-item .coffee .recipe h1 {
+        color: #fff; }
     .panel-items .panel-item .watermelon .recipe {
       background-color: #f0706d;
       color: #fff; }
+      .panel-items .panel-item .watermelon .recipe h1 {
+        color: #fff; }
     .panel-items .panel-item .strawberry .recipe {
       background-color: #e93c4f;
       color: #fff; }
+      .panel-items .panel-item .strawberry .recipe h1 {
+        color: #fff; }
     .panel-items .panel-item .img {
       height: 50%;
       background-color: white; }
@@ -233,6 +247,9 @@ a {
       .panel-items .panel-item .recipe ul li {
         font-size: 1.8rem;
         line-height: 2.8rem; }
+      .panel-items .panel-item .recipe h1 {
+        text-align: left;
+        color: #333; }
       .panel-items .panel-item .recipe h3 {
         font-size: 3.5rem;
         margin: 2rem 0 1.5rem; }
@@ -281,6 +298,15 @@ a {
       top: 19px;
       left: 16px; }
 
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  font-size: 1.5rem;
+  text-align: center; }
+
 @media (min-width: 600px) {
   .smoothies-list ul {
     width: 100%; }
@@ -291,6 +317,10 @@ a {
       clear: both; }
     .smoothies-list ul li {
       padding: 30px; }
+      .smoothies-list ul li a {
+        padding: 0 20px; }
+        .smoothies-list ul li a p {
+          font-size: 24px; }
   .panel-items .panel-item .recipe {
     padding: 0 50px 50px; }
     .panel-items .panel-item .recipe h3 {
@@ -301,60 +331,88 @@ a {
       line-height: 3.4rem; }
     .panel-items .panel-item .recipe p {
       font-size: 2.4rem;
-      line-height: 3.4rem; } }
+      line-height: 3.4rem; }
+  #footer {
+    font-size: 2rem; } }
 
 @media (min-width: 1024px) {
   h1 {
-    margin: 7vh 0 2vh;
+    margin: 4vh 0 0;
     font-size: 7rem; }
-  .smoothies-list ul {
-    margin: 0 auto; }
-    .smoothies-list ul:before, .smoothies-list ul:after {
-      content: "";
-      display: table; }
-    .smoothies-list ul:after {
-      clear: both; }
-    .smoothies-list ul li {
-      width: 20%;
-      padding: 20px; }
-      .smoothies-list ul li a:after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        margin: 0 auto;
-        -webkit-transition: width .3s ease;
-        transition: width .3s ease; }
-      .smoothies-list ul li a:hover:after {
-        width: 70%; }
-      .smoothies-list ul li.banana a:after {
-        background-color: #f2d541; }
-      .smoothies-list ul li.apple a:after {
-        background-color: #cadeb3; }
-      .smoothies-list ul li.carrot a:after {
-        background-color: #f0b31d; }
-      .smoothies-list ul li.chocolate a:after {
-        background-color: #894f1a; }
-      .smoothies-list ul li.mango a:after {
-        background-color: #f18316;
-        color: #fff; }
-      .smoothies-list ul li.melon a:after {
-        background-color: #ffe5b4; }
-      .smoothies-list ul li.vanilla a:after {
-        background-color: #fdf9ed; }
-      .smoothies-list ul li.coffee a:after {
-        background-color: #b89882;
-        color: #fff; }
-      .smoothies-list ul li.watermelon a:after {
-        background-color: #f0706d;
-        color: #fff; }
-      .smoothies-list ul li.strawberry a:after {
-        background-color: #e93c4f;
-        color: #fff; }
+  .smoothies-list {
+    padding-bottom: 60px; }
+    .smoothies-list ul {
+      margin: 0 auto; }
+      .smoothies-list ul:before, .smoothies-list ul:after {
+        content: "";
+        display: table; }
+      .smoothies-list ul:after {
+        clear: both; }
+      .smoothies-list ul li {
+        width: 20%;
+        padding: 20px; }
+        .smoothies-list ul li a {
+          padding: 20px; }
+          .smoothies-list ul li a:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            margin: 0 auto;
+            -webkit-transition: width .3s ease;
+            transition: width .3s ease; }
+          .smoothies-list ul li a:hover:after {
+            width: 70%; }
+          .smoothies-list ul li a p {
+            font-size: 16px; }
+        .smoothies-list ul li.banana a:after {
+          background-color: #f2d541; }
+        .smoothies-list ul li.banana a:hover {
+          color: #f2d541; }
+        .smoothies-list ul li.apple a:after {
+          background-color: #98bf6c; }
+        .smoothies-list ul li.apple a:hover {
+          color: #98bf6c; }
+        .smoothies-list ul li.carrot a:after {
+          background-color: #f0b31d; }
+        .smoothies-list ul li.carrot a:hover {
+          color: #f0b31d; }
+        .smoothies-list ul li.chocolate a:after {
+          background-color: #894f1a; }
+        .smoothies-list ul li.chocolate a:hover {
+          color: #894f1a; }
+        .smoothies-list ul li.mango a:after {
+          background-color: #f18316;
+          color: #fff; }
+        .smoothies-list ul li.mango a:hover {
+          color: #f18316; }
+        .smoothies-list ul li.melon a:after {
+          background-color: #ffb01b; }
+        .smoothies-list ul li.melon a:hover {
+          color: #ffb01b; }
+        .smoothies-list ul li.vanilla a:after {
+          background-color: #a68112; }
+        .smoothies-list ul li.vanilla a:hover {
+          color: #a68112; }
+        .smoothies-list ul li.coffee a:after {
+          background-color: #b89882;
+          color: #fff; }
+        .smoothies-list ul li.coffee a:hover {
+          color: #b89882; }
+        .smoothies-list ul li.watermelon a:after {
+          background-color: #f0706d;
+          color: #fff; }
+        .smoothies-list ul li.watermelon a:hover {
+          color: #f0706d; }
+        .smoothies-list ul li.strawberry a:after {
+          background-color: #e93c4f;
+          color: #fff; }
+        .smoothies-list ul li.strawberry a:hover {
+          color: #e93c4f; }
   .panel-items .panel-item .smoothie-wrapper {
     width: 100vw;
     height: calc(100vh - 80px); }
@@ -457,31 +515,36 @@ a {
       top: 14px;
       width: 0;
       height: 2px;
-      background-color: #e93c4f; } }
+      background-color: #e93c4f; }
+  #footer {
+    text-align: center;
+    font-size: 2rem;
+    padding: 20px 40px; }
+    #footer:before, #footer:after {
+      content: "";
+      display: table; }
+    #footer:after {
+      clear: both; }
+    #footer .created-by {
+      float: right; }
+    #footer .credits {
+      float: left; } }
+
+@media (min-width: 1280px) {
+  .smoothies-list ul li a p {
+    font-size: 20px; } }
 
 @media (min-width: 1440px) {
-  h1 {
-    font-size: 8rem;
-    margin: 8vh 0 4vh; } }
+  .smoothies-list ul li a p {
+    font-size: 24px; } }
 
-@media screen and (min-height: 800px) {
+@media screen and (min-width: 1024px) and (min-height: 800px) {
+  h1 {
+    margin: 6vh 0 1vh; }
   .panel-items .panel-item .recipe h3 {
     margin: 5vh 0 3vh; }
   .smoothies-list ul li {
     padding: 40px 20px; } }
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 40px;
-  font-size: 2rem; }
-  #footer:before, #footer:after {
-    content: "";
-    display: table; }
-  #footer:after {
-    clear: both; }
 
 svg {
   width: 100%;

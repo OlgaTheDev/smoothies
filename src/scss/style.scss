@@ -27,14 +27,6 @@ body, html, *, *:after, *:before{
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-    @extend %amatic;
-    font-size: 5rem;
-    margin: 5vh 0 2vh;
-    text-align: center;
-    color: $strawberry;
-}
-
 a{
     text-decoration: none;
     color: lightseagreen;
@@ -110,6 +102,111 @@ a{
     }
 }
 
+h1{
+    @extend %amatic;
+    font-size: 5rem;
+}
+
+// Header
+
+.main-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include size(100vw, 100vh);
+    z-index: 100;
+    background: $watermelon;
+    color: #fff;
+
+    h1{
+        position: absolute;
+        top:0;
+        height: 100%;
+        transform: translate3d(0,25%,0);
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+        font-size: 6rem;
+    }
+}
+
+.loading{
+    .main-header{
+        & > h1{
+            animation: rise-from-bottom 1s cubic-bezier(0.7,0,0.3,1) both;
+        }
+    }
+}
+
+.loaded{
+    .main-header{
+        position: absolute;
+        animation: hide-above 1s cubic-bezier(0.7,0,0.3,1) forwards;
+
+        & > h1{
+            opacity: 1;
+            animation: go-down 1s cubic-bezier(0.7,0,0.3,1) forwards;
+            transform-origin: 50% 0;
+            transition: .2s ease-in-out;
+        }
+
+    }
+
+}
+
+
+//@for $i from 1 through 10{
+//    .loaded{
+//        ul{
+//            li{
+//                &:nth-child(#{$i}){
+//                    animation-delay: .3s + $i/100;
+//                }
+//            }
+//        }
+//    }
+//}
+
+@keyframes rise-from-bottom-sm {
+    0%{
+        transform: translate3d(0,100px,0);
+        //opacity: 0;
+    }
+    50%{
+        //opacity: 1;
+    }
+    100%{
+        transform: translate3d(0,0,0);
+    }
+}
+
+@keyframes rise-from-bottom {
+    0%{
+        opacity: 0;
+        transform: translate3d(0,800px,0);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes hide-above {
+    100% {
+        transform: translate3d(0,-100%,0);
+    }
+}
+
+@keyframes go-down {
+    100%{
+        transform: translate3d(0,100%,0) translate3d(0,40px,0) scale3d(0.65,0.65,1);
+        color: $strawberry;
+    }
+}
+
 
 // Smoothies-list
 
@@ -118,7 +215,7 @@ a{
     background-color: #fff;
     @extend %escape-transition;
     overflow: auto;
-    padding-bottom: 80px;
+    padding-top: 80px;
 
     &.scale-down{
         @extend .scale-down;
@@ -363,9 +460,9 @@ a{
 // Footer
 
 #footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    //position: absolute;
+    //bottom: 0;
+    //left: 0;
     width: 100%;
     padding: 20px 30px;
     font-size: 1.5rem;
@@ -380,6 +477,7 @@ a{
 @media (min-width: $tablets) {
 
     .smoothies-list{
+        padding-top: 120px;
         ul{
             width: 100%;
 
@@ -398,6 +496,13 @@ a{
             }
         }
     }
+
+    .main-header{
+        h1{
+            font-size: 10rem;
+        }
+    }
+
 
     .panel-items .panel-item{
         .recipe{
@@ -422,6 +527,13 @@ a{
         }
     }
 
+    .recipe{
+        h1{
+            font-size: 8rem;
+            margin: 3vh 0 0;
+        }
+    }
+
     #footer{
         font-size: 2rem;
     }
@@ -430,13 +542,20 @@ a{
 
 @media (min-width: $netbooks) {
 
-    h1{
+    .recipe h1{
         margin: 4vh 0 0;
         font-size: 7rem;
     }
 
+
+    .main-header{
+        h1{
+            font-size: 10rem;
+        }
+    }
+
     .smoothies-list{
-        padding-bottom: 60px;
+        padding-top: 100px;
 
         ul{
             margin: 0 auto;
@@ -448,7 +567,7 @@ a{
 
                 a{
                     padding: 20px;
-                    
+
                     &:after{
                         content: '';
                         display: block;
@@ -747,31 +866,82 @@ a{
 
 
 @media (min-width: $notebooks) {
-    .smoothies-list ul li a p{
-        font-size: 20px;
+    .smoothies-list {
+        padding-top: 120px;
+
+        ul li a p{
+            font-size: 20px;
+        }
     }
+
+    .main-header{
+        h1{
+            font-size: 12rem;
+        }
+    }
+
 }
 
 @media (min-width: $screens) {
-    .smoothies-list ul li a p{
-        font-size: 24px;
+    .smoothies-list {
+        padding-top: 120px;
+
+
+        ul li a p{
+            font-size: 24px;
+        }
     }
+
+    .main-header{
+        h1{
+            font-size: 12rem;
+        }
+    }
+
+    .recipe h1{
+        font-size: 9rem;
+    }
+
 }
 
 
-@media screen and (min-width: 1024px) and (min-height: 800px){
-    h1{
-        margin: 6vh 0 1vh;
+@media screen and (min-width: $netbooks) and (min-height: 800px){
+    .main-header{
+        h1{
+            font-size: 12rem;
+        }
+    }
+    .recipe h1{
+        margin: 5vh 0 1vh;
+        font-size: 8rem;
     }
     .panel-items .panel-item .recipe h3{
         margin: 5vh 0 3vh;
     }
 
-    .smoothies-list ul li{
-        padding: 40px 20px;
+    .smoothies-list{
+        ul li{
+            padding: 40px 20px;
+        }
     }
 }
 
+
+@media screen and (min-width: $screens) and (min-height: 800px){
+    .main-header{
+        h1{
+            font-size: 14rem;
+        }
+    }
+    .recipe h1{
+        margin: 6vh 0 1vh;
+        font-size: 10rem;
+    }
+
+    .smoothies-list{
+        padding-top: 140px;
+    }
+}
 
 // SVG animation
 

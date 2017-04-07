@@ -68,12 +68,6 @@ body, html, *, *:after, *:before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-h1 {
-  font-size: 5rem;
-  margin: 5vh 0 2vh;
-  text-align: center;
-  color: #e93c4f; }
-
 a {
   text-decoration: none;
   color: lightseagreen;
@@ -142,11 +136,110 @@ a {
     -webkit-transform: scale(1.1);
             transform: scale(1.1); } }
 
+h1 {
+  font-size: 5rem; }
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: #f0706d;
+  color: #fff; }
+  .main-header h1 {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    -webkit-transform: translate3d(0, 25%, 0);
+            transform: translate3d(0, 25%, 0);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    font-size: 6rem; }
+
+.loading .main-header > h1 {
+  -webkit-animation: rise-from-bottom 1s cubic-bezier(0.7, 0, 0.3, 1) both;
+          animation: rise-from-bottom 1s cubic-bezier(0.7, 0, 0.3, 1) both; }
+
+.loaded .main-header {
+  position: absolute;
+  -webkit-animation: hide-above 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+          animation: hide-above 1s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
+  .loaded .main-header > h1 {
+    opacity: 1;
+    -webkit-animation: go-down 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+            animation: go-down 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out; }
+
+@-webkit-keyframes rise-from-bottom-sm {
+  0% {
+    -webkit-transform: translate3d(0, 100px, 0);
+            transform: translate3d(0, 100px, 0); }
+  50% { }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+@keyframes rise-from-bottom-sm {
+  0% {
+    -webkit-transform: translate3d(0, 100px, 0);
+            transform: translate3d(0, 100px, 0); }
+  50% { }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+@-webkit-keyframes rise-from-bottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 800px, 0);
+            transform: translate3d(0, 800px, 0); }
+  100% {
+    opacity: 1; } }
+
+@keyframes rise-from-bottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 800px, 0);
+            transform: translate3d(0, 800px, 0); }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes hide-above {
+  100% {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0); } }
+
+@keyframes hide-above {
+  100% {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0); } }
+
+@-webkit-keyframes go-down {
+  100% {
+    -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 40px, 0) scale3d(0.65, 0.65, 1);
+            transform: translate3d(0, 100%, 0) translate3d(0, 40px, 0) scale3d(0.65, 0.65, 1);
+    color: #e93c4f; } }
+
+@keyframes go-down {
+  100% {
+    -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 40px, 0) scale3d(0.65, 0.65, 1);
+            transform: translate3d(0, 100%, 0) translate3d(0, 40px, 0) scale3d(0.65, 0.65, 1);
+    color: #e93c4f; } }
+
 .smoothies-list {
   position: relative;
   background-color: #fff;
   overflow: auto;
-  padding-bottom: 80px; }
+  padding-top: 80px; }
   .smoothies-list ul {
     background-color: #fff;
     position: relative;
@@ -299,28 +392,29 @@ a {
       left: 16px; }
 
 #footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   padding: 20px 30px;
   font-size: 1.5rem;
   text-align: center; }
 
 @media (min-width: 600px) {
-  .smoothies-list ul {
-    width: 100%; }
-    .smoothies-list ul:before, .smoothies-list ul:after {
-      content: "";
-      display: table; }
-    .smoothies-list ul:after {
-      clear: both; }
-    .smoothies-list ul li {
-      padding: 30px; }
-      .smoothies-list ul li a {
-        padding: 0 20px; }
-        .smoothies-list ul li a p {
-          font-size: 24px; }
+  .smoothies-list {
+    padding-top: 120px; }
+    .smoothies-list ul {
+      width: 100%; }
+      .smoothies-list ul:before, .smoothies-list ul:after {
+        content: "";
+        display: table; }
+      .smoothies-list ul:after {
+        clear: both; }
+      .smoothies-list ul li {
+        padding: 30px; }
+        .smoothies-list ul li a {
+          padding: 0 20px; }
+          .smoothies-list ul li a p {
+            font-size: 24px; }
+  .main-header h1 {
+    font-size: 10rem; }
   .panel-items .panel-item .recipe {
     padding: 0 50px 50px; }
     .panel-items .panel-item .recipe h3 {
@@ -332,15 +426,20 @@ a {
     .panel-items .panel-item .recipe p {
       font-size: 2.4rem;
       line-height: 3.4rem; }
+  .recipe h1 {
+    font-size: 8rem;
+    margin: 3vh 0 0; }
   #footer {
     font-size: 2rem; } }
 
 @media (min-width: 1024px) {
-  h1 {
+  .recipe h1 {
     margin: 4vh 0 0;
     font-size: 7rem; }
+  .main-header h1 {
+    font-size: 10rem; }
   .smoothies-list {
-    padding-bottom: 60px; }
+    padding-top: 100px; }
     .smoothies-list ul {
       margin: 0 auto; }
       .smoothies-list ul:before, .smoothies-list ul:after {
@@ -531,20 +630,42 @@ a {
       float: left; } }
 
 @media (min-width: 1280px) {
-  .smoothies-list ul li a p {
-    font-size: 20px; } }
+  .smoothies-list {
+    padding-top: 120px; }
+    .smoothies-list ul li a p {
+      font-size: 20px; }
+  .main-header h1 {
+    font-size: 12rem; } }
 
 @media (min-width: 1440px) {
-  .smoothies-list ul li a p {
-    font-size: 24px; } }
+  .smoothies-list {
+    padding-top: 120px; }
+    .smoothies-list ul li a p {
+      font-size: 24px; }
+  .main-header h1 {
+    font-size: 12rem; }
+  .recipe h1 {
+    font-size: 9rem; } }
 
 @media screen and (min-width: 1024px) and (min-height: 800px) {
-  h1 {
-    margin: 6vh 0 1vh; }
+  .main-header h1 {
+    font-size: 12rem; }
+  .recipe h1 {
+    margin: 5vh 0 1vh;
+    font-size: 8rem; }
   .panel-items .panel-item .recipe h3 {
     margin: 5vh 0 3vh; }
   .smoothies-list ul li {
     padding: 40px 20px; } }
+
+@media screen and (min-width: 1440px) and (min-height: 800px) {
+  .main-header h1 {
+    font-size: 14rem; }
+  .recipe h1 {
+    margin: 6vh 0 1vh;
+    font-size: 10rem; }
+  .smoothies-list {
+    padding-top: 140px; } }
 
 svg {
   width: 100%;

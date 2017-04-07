@@ -32,23 +32,17 @@
 
     $( document ).ready(function(){
         
-        
         var mainSection = $('#smoothies-list'),
             closeBtn = $('.close-btn'),
             links = mainSection.find('a'),
-            svgs = $('svg');
-        
-        
-        // Color background
-        
-//        links.mouseenter(function () {
-//            var color = $(this).data(color);
-//            
-//            $('#smoothies-list, #smoothies-list a').animate({
-//                backgroundColor: color.color
-//            }, 300)
-//        })
-        
+            svgs = $('svg'),
+            header = $('.main-header');
+
+
+        // Header animation
+
+        $('#page-wrapper').addClass('loading');
+
 
         // Open panel
 
@@ -59,6 +53,7 @@
                 color = $(this).data('color');
 
             mainSection.addClass('scale-down');
+            header.addClass('invisible');
 
             showPanel(linkToPanel);
 
@@ -69,6 +64,7 @@
 
         closeBtn.on('click', function () {
             mainSection.removeClass('scale-down');
+            header.removeClass('invisible');
             $(this).parent().removeClass('show');
             svgs.removeClass('to-show');
         });
@@ -100,6 +96,10 @@
     ////////////// WINDOW LOAD EVENT ///////////////
 
     $(window).on('load', function(){
+
+        setTimeout(function () {
+            $('#page-wrapper').removeClass('loading').addClass('loaded');
+        }, 1000)
         
     })
     

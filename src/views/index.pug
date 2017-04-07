@@ -13,10 +13,13 @@ block variables
     - var watermelon= '#ffe5e5'
     - var strawberry= '#ffdbe3'
 
+
 block content
     .block
         section#smoothies-list.smoothies-list.block
-            h1 Top 10 Smoothies
+
+            .main-header
+                h1 Top 10 Smoothies
 
             ul
                 li.apple
@@ -61,6 +64,16 @@ block content
                         p Strawberry frozen smoothie
 
 
+
+            #footer
+                .created-by
+                    span Developed by &nbsp;
+                    a(href='https://github.com/OlgaTheDev') OlgaKulik
+
+                .credits
+                    span Credits svgs: &nbsp;
+                    a(href='http://www.freepik.com' target="_blank") Freepik
+
         .panel-items.block
 
             .panel-item.block(data-panel="panel-1")
@@ -93,13 +106,5 @@ block content
             .panel-item.block(data-panel="panel-10")
                 include _pages/_strawberry-panel.pug
 
-        #footer
-            .created-by
-                span Developed by &nbsp;
-                a(href='https://github.com/OlgaTheDev') OlgaKulik
-
-            .credits
-                span Credits svgs: &nbsp;
-                a(href='http://www.freepik.com' target="_blank") Freepik
 
 
